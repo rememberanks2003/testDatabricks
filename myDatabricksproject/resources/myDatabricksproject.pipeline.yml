@@ -1,0 +1,13 @@
+# The main pipeline for myDatabricksproject
+resources:
+  pipelines:
+    myDatabricksproject_pipeline:
+      name: myDatabricksproject_pipeline
+      catalog: workspace
+      target: myDatabricksproject_${bundle.target}
+      libraries:
+        - notebook:
+            path: ../src/dlt_pipeline.ipynb
+
+      configuration:
+        bundle.sourcePath: ${workspace.file_path}/src
